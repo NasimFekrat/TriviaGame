@@ -1,0 +1,30 @@
+/* colors: #b48484 light pink , dark pink: #753e42 , dark blue: #1e3447 , black: #061d24 */
+html{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Armata', sans-serif;
+    color: #061d24;
+    background-image: url("../images/wheat.png"); /* The image used */
+    background-color: #061d24; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: 500px;
+}
+.container{
+    background-color: #b48484;
+    margin: 50px auto;
+    height: 500px;
+}
+.btn{
+    background-color: #061d24;
+    color: #b48484;
+}
+.main{
+    margin-bottom: 20px;
+    height: 20px;
+}
