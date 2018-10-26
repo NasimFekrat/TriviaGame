@@ -13,12 +13,11 @@ body{
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
-    height: 500px;
+    height: auto;
 }
 .container{
     background-color: #b48484;
-    margin: 50px auto;
-    height: 500px;
+    height: auto;
 }
 .btn{
     background-color: #061d24;
