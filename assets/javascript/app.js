@@ -105,7 +105,7 @@ var questions = [q0 , q1 , q2 , q3 , q4 , q5 , q6 , q7 , q8 , q9];//array of que
 /*set the timer*/
 function setTimer(){
     /*start timer*/
-    var count = 10;//start 120 seconds
+    var count = 120;//start 120 seconds
     var timeSet = setInterval(function() {
         
         $('.main').text("Time Remaining: " + count + " Seconds");
@@ -122,6 +122,11 @@ function setTimer(){
         }
     }, 1000);
     /*start timer*/       
+}
+function checking(){
+    
+    $("answer" + j).attr('name').is(":checked").attr('value');
+    
 }
 /*set the timer*/
 $(document).ready(function() {
@@ -143,13 +148,37 @@ $(document).ready(function() {
             dq.html("<br>" + questions[i].question);
             
             for(var j=0; j<4; j++){
-                var da = $('<input> '+questions[i].possibleAnswers[j]+'<br></input>');
+                var da = $('<input> ' + questions[i].possibleAnswers[j] + '<br></input>');
                 da.attr('type' , 'radio');
-                da.attr('name' , 'radio_group');
+                da.attr('name' , 'radio_group' + i);
+                da.addClass("answer" + j);
                 $(".questionaire").append(da);
             }
+
         }
         /*set the questions and answers*/
+        
+        /*
+        $("#radio_1").prop("checked", true);
+        $("#radio_1").attr('checked', 'checked');
+        
+        $("input[name=radio_group]:radio").click(function() {
+            if($(this).attr("value")=="yes") {
+                $(".answer").show();
+                alert("yes");
+            }
+            if($(this).attr("value")=="no") {
+                $(".answer").hide();
+                alert("no");
+            }
+        });
+        
+        $('input[name=radio_group]').mouseup(function(){
+            alert("Before change "+$('input[name=radio_group]:checked').val());
+        }).change(function(){
+            alert("After change "+$('input[name=radio_group]:checked').val());
+        });
+        */
     });
     /*function when clicking the start button*/
 });
