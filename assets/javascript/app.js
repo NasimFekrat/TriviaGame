@@ -102,6 +102,9 @@ var q9 = {
 
 var questions = [q0 , q1 , q2 , q3 , q4 , q5 , q6 , q7 , q8 , q9];//array of questionaire objects
 
+var correct = 0;
+var wrong =0;
+
 /*set the timer*/
 function setTimer(){
     /*start timer*/
@@ -117,17 +120,13 @@ function setTimer(){
                 clearInterval(timeSet);
                 $(".main").empty();//clear main
                 $(".questionaire").empty();//clear questionaire
-                $(".main").html("All Done!<br>Correct Answers: <br>Incorrect Answers: <br>Unanswered: ");
+                $(".main").html("All Done!<br>Correct Answers: " + correct + "<br>Incorrect Answers: " + wrong + "<br>Unanswered: ");
             /*end timer*/
         }
     }, 1000);
     /*start timer*/       
-}
-function checking(){
-    
-    $("answer" + j).attr('name').is(":checked").attr('value');
-    
-}
+}    
+
 /*set the timer*/
 $(document).ready(function() {
     /*set start button*/
@@ -151,34 +150,50 @@ $(document).ready(function() {
                 var da = $('<input> ' + questions[i].possibleAnswers[j] + '<br></input>');
                 da.attr('type' , 'radio');
                 da.attr('name' , 'radio_group' + i);
-                da.addClass("answer" + j);
+                da.attr('id' , j);
+                da.attr('value' , i);
+                da.addClass("answerchoice");
                 $(".questionaire").append(da);
             }
-
-        }
         /*set the questions and answers*/
-        
-        /*
-        $("#radio_1").prop("checked", true);
-        $("#radio_1").attr('checked', 'checked');
-        
-        $("input[name=radio_group]:radio").click(function() {
-            if($(this).attr("value")=="yes") {
-                $(".answer").show();
-                alert("yes");
+    }
+        /*functions for correct and incorrect answers*/
+        $(".answerchoice").on('click' , function(){
+            //console.log($(this));
+            //console.log(questions[this.value]);
+            //console.log(questions[this.value].flags);
+            if(this.id === "0") {
+                var answerChosen = 'A';
+            } else if(this.id === "1") {
+                answerChosen = 'B';
+            } else if (this.id === "2") {
+                answerChosen = 'C';
+            } else if (this.id === "3") {
+                answerChosen = 'D';
             }
-            if($(this).attr("value")=="no") {
-                $(".answer").hide();
-                alert("no");
+            if ((answerChosen == 'A') && (questions[this.value].flags[0] == true)) {
+                correct++;
+            } else if (answerChosen == 'A') {
+                wrong++;
+            }
+            if ((answerChosen == 'B') && (questions[this.value].flags[1] == true)) {
+                correct++;
+            } else if (answerChosen == 'B') {
+                wrong++;
+        
+            }
+            if ((answerChosen == 'C') && (questions[this.value].flags[2] == true)) {
+                correct++;
+            } else if (answerChosen == 'C') {
+                wrong++;
+            }
+            if ((answerChosen == 'D') && (questions[this.value].flags[3] == true)) {
+                correct++;
+            } else if (answerChosen == 'D') {
+                wrong++;
             }
         });
-        
-        $('input[name=radio_group]').mouseup(function(){
-            alert("Before change "+$('input[name=radio_group]:checked').val());
-        }).change(function(){
-            alert("After change "+$('input[name=radio_group]:checked').val());
-        });
-        */
+        /*functions for correct and incorrect answers*/
     });
     /*function when clicking the start button*/
 });
