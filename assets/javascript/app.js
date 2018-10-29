@@ -164,7 +164,7 @@ $(document).ready(function() {
         }
 
         /*set submit button*/
-        var submitbtn = $('<button>Submit</button>');
+        var submitbtn = $('<button>Done</button>');
         submitbtn.attr("type" , "button");
         submitbtn.addClass("btn btn-lg mt-5");
         $(".questionaire").append(submitbtn);
