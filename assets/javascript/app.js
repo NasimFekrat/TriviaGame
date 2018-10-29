@@ -103,12 +103,13 @@ var q9 = {
 var questions = [q0 , q1 , q2 , q3 , q4 , q5 , q6 , q7 , q8 , q9];//array of questionaire objects
 
 var correct = 0;
-var wrong =0;
+var wrong = 0;
+var unanswered = 10;
+var count = 120;//start 120 seconds
 
 /*set the timer*/
 function setTimer(){
     /*start timer*/
-    var count = 120;//start 120 seconds
     var timeSet = setInterval(function() {
         
         $('.main').text("Time Remaining: " + count + " Seconds");
@@ -120,26 +121,29 @@ function setTimer(){
                 clearInterval(timeSet);
                 $(".main").empty();//clear main
                 $(".questionaire").empty();//clear questionaire
-                $(".main").html("All Done!<br>Correct Answers: " + correct + "<br>Incorrect Answers: " + wrong + "<br>Unanswered: ");
+                $(".main").html("All Done!<br>Correct Answers: " + correct + "<br>Incorrect Answers: " + wrong + "<br>Unanswered: " + unanswered);
             /*end timer*/
         }
     }, 1000);
     /*start timer*/       
 }    
-
 /*set the timer*/
+
 $(document).ready(function() {
+
     /*set start button*/
-    var start = $('<button>start</button>');
+    var start = $('<button>Start</button>');
     start.attr("type" , "button");
     start.addClass("btn btn-lg");
     $(".main").append(start);
     /*set start button*/
+
     /*function when clicking the start button*/
     start.click(function () {
         $(".main").empty();//clear main
         $(".questionaire").empty();//clear questionaire
         setTimer();//set the timer
+
         /*set the questions and answers*/
         for(var i=0; i<questions.length; i++){
             var dq = $('<div></div>');
@@ -156,7 +160,24 @@ $(document).ready(function() {
                 $(".questionaire").append(da);
             }
         /*set the questions and answers*/
-    }
+
+        }
+
+        /*set submit button*/
+        var submitbtn = $('<button>Submit</button>');
+        submitbtn.attr("type" , "button");
+        submitbtn.addClass("btn btn-lg mt-5");
+        $(".questionaire").append(submitbtn);
+        /*set submit button*/
+
+        /*function when clicking the submit button*/
+        submitbtn.click(function(){
+            /*end timer*/
+            count = 0;
+            /*end timer*/
+        });
+        /*function when clicking the submit button*/
+
         /*functions for correct and incorrect answers*/
         $(".answerchoice").on('click' , function(){
             //console.log($(this));
@@ -192,8 +213,11 @@ $(document).ready(function() {
             } else if (answerChosen == 'D') {
                 wrong++;
             }
+            unanswered = 10 - (correct + wrong) ;
         });
         /*functions for correct and incorrect answers*/
+    
     });
     /*function when clicking the start button*/
+
 });
