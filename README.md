@@ -1,5 +1,7 @@
 # Trivia Game
 
+### Overview
+
 * This application is a trivia form with multiple choice.
 
 * The player will have a limited amount of time to finish the quiz. 
@@ -9,3 +11,7 @@
 * Player is not allowed to pick more than one answer per question.
 
 * The timer is countdown.
+
+### URL
+* you can play it in foloowing URL:
+ * https://nasimfekrat.github.io/trivia-game/
