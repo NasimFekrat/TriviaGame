@@ -14,4 +14,4 @@
 
 ### URL
 * you can play it in foloowing URL:
- * https://nasimfekrat.github.io/trivia-game/
+  * https://nasimfekrat.github.io/trivia-game/
